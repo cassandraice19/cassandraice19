@@ -1,0 +1,853 @@
+Delivered-To: javellanaabigail@gmail.com
+Received: by 2002:a0c:ab4d:0:b0:65b:1e6c:33ee with SMTP id i13csp1560838qvb;
+        Mon, 2 Oct 2023 12:04:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHLlbUFr+nvQDB08YYy9NPr+M2NmIUHyGrjg2YPz5mK0hyRaDaStdGGEkuxSmdRpGtSf5zZ
+X-Received: by 2002:a0c:aa5b:0:b0:656:5402:8d09 with SMTP id e27-20020a0caa5b000000b0065654028d09mr10703115qvb.4.1696273444972;
+        Mon, 02 Oct 2023 12:04:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1696273444; cv=none;
+        d=google.com; s=arc-20160816;
+        b=B+0JcVDm0+XXcjxqWhAbRP4wC1ymZSr00Epb+DltfqjTjr0+mfEAVn8GRA+aYNrGN+
+         8+PqoKAyUXMtUvz1p2Y7DsiwqA0zf9XleAdkJGJLeWvZLwTMYoKKJgLrA6uDKN9zvGku
+         zGonwpiuuSGgyLqoaXLyHgqxzFPbaKoLrGdNboBV69UHTrGhUXD9yvMWrEeN5M3cWCC1
+         f1b4R8qlSy7m4VRJ5gyWmSTj15Yd8+4LDCkPAWaw70KyM5DqVHzvEcewWCptwlkIFoyT
+         zkk3CLvrWjiS1D17HPHi/x5fg+BBbGvodz4OxUvudYkde2s1rL9Ptu7wvu2WfPw3rRfI
+         ObVQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=message-id:errors-to:to:date:from:subject:mime-version
+         :dkim-signature:dkim-signature;
+        bh=foKRL6H82ZnKt8CXfPXVvpuKAKs/94IC29UDhExc808=;
+        fh=pB+c8FuYvUO6IRLK96wXr0LT/I77kDce2+j7Tohak10=;
+        b=oejP5QFAlbdGdQayU59KaGFzeIq36I8dHCxjyNZntmyeWEAdYMakcNmhDRZ4ipgSXN
+         WDbfCwUTSmvMmizrDiFlJusrbhY8AZ+tKbZ43apqvcG/97nUvYp53YxduM2zECUkFFNX
+         ge4m4mvflKy8aZo95gscJTGAB8f4M9DNSul5kpGiixz9LhGJz6rKbafyL5d3Rx5TAzGW
+         N03z8kS0MLrtBzqlBYfIgRiNTRNZ+CeQWvnaUBZO/3N6GzbUJE7TnpFc2uD0biKpRvaQ
+         HS4oB3gdMqP1O4Fg+B+eRTGXJnAltGPa7d/EjfNoBSZvUtZ8LIqKZsCnwoeH/rnV/qAx
+         vQxQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@giftcards.com header.s=listrak header.b="D/NJK+Gd";
+       dkim=pass header.i=@esp1.co header.s=app header.b=dveOgUt+;
+       spf=pass (google.com: domain of 6qrre1570oj135cbbdij6j4q5ijj9n5re3g14n073k5@b.lt02.net designates 142.0.80.69 as permitted sender) smtp.mailfrom=6QRRE1570OJ135CBBDIJ6J4Q5IJJ9N5RE3G14N073K5@b.lt02.net
+Return-Path: <6QRRE1570OJ135CBBDIJ6J4Q5IJJ9N5RE3G14N073K5@b.lt02.net>
+Received: from vmta69.80.lstrk.net (vmta69.80.lstrk.net. [142.0.80.69])
+        by mx.google.com with ESMTPS id z16-20020a0cf010000000b00635f614adb8si3714325qvk.560.2023.10.02.12.04.04
+        for <javellanaabigail@gmail.com>
+        (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+        Mon, 02 Oct 2023 12:04:04 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 6qrre1570oj135cbbdij6j4q5ijj9n5re3g14n073k5@b.lt02.net designates 142.0.80.69 as permitted sender) client-ip=142.0.80.69;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@giftcards.com header.s=listrak header.b="D/NJK+Gd";
+       dkim=pass header.i=@esp1.co header.s=app header.b=dveOgUt+;
+       spf=pass (google.com: domain of 6qrre1570oj135cbbdij6j4q5ijj9n5re3g14n073k5@b.lt02.net designates 142.0.80.69 as permitted sender) smtp.mailfrom=6QRRE1570OJ135CBBDIJ6J4Q5IJJ9N5RE3G14N073K5@b.lt02.net
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=listrak; d=giftcards.com;
+ h=MIME-Version:Subject:From:Date:To:Content-Type:Message-ID;
+ i=info@giftcards.com;
+ bh=foKRL6H82ZnKt8CXfPXVvpuKAKs/94IC29UDhExc808=;
+ b=D/NJK+GdwP3uxCJmuffxPRjS4vKmbpKHF2sQluMhIYeekddMv0ISSy5joSqkxDs48HsMDVKAUeNC
+   GLIMqr6OuIS85jy0fxLhgDBzc6OSUucUqDxUE0A/5hi+0ArddyoFhNQ3cPa8Q1GfuUx2cHV/slS1
+   /J5TFaYwak9CxDXyZ+w=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; s=app; d=esp1.co;
+ h=MIME-Version:Subject:From:Date:To:Content-Type:Message-ID;
+ bh=foKRL6H82ZnKt8CXfPXVvpuKAKs/94IC29UDhExc808=;
+ b=dveOgUt+XnBWMJ/zVYHXHS5ZDZWBI8TlJruRsvKLUYkl749pBSoFQN6FLrKaPJr1F3ZuofVpPto5
+   G3yLPpedtCL3CKwWUQ1XT+Km8hvbxWB4uHbf4QI3ON90frGq1wJ06IjnsWyNhzYzN311H6tvASus
+   7aaTe/uAcUl7LCIJTU0=
+Received: by vmta69.80.lstrk.net id h3ca282r5isc for <javellanaabigail@gmail.com>; Mon, 2 Oct 2023 15:02:17 -0400 (envelope-from <6QRRE1570OJ135CBBDIJ6J4Q5IJJ9N5RE3G14N073K5@b.lt02.net>)
+X-Message-Reference: 7C6FBVLCO3M4B3FA505235ATAO
+X-RPCampaign: esp5567547066867667795177526651706553485350515365846579
+MIME-Version: 1.0
+Subject: Pumpkin Spice and Everything Nice...
+From: "Giftcards.com" <info@giftcards.com>
+Date: 2 Oct 2023 15:02:17 -0400
+To: javellanaabigail@gmail.com
+X-Mailer-Reference: 6QRRE1570OJ135CBBDIJ6J4Q5IJJ9N5RE3G14N073K5
+Errors-To: 6QRRE1570OJ135CBBDIJ6J4Q5IJJ9N5RE3G14N073K5@b.lt02.net
+Content-Type: multipart/alternative;
+ boundary=--boundary_d393fba1e45348869d0dcc46fe477948
+Message-ID: <0.2.290.857.1D9F562F699ECEA.BEB5@vmta69.80.lstrk.net>
+
+----boundary_d393fba1e45348869d0dcc46fe477948
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Fall festivities are in full swing and we're here to make sure you're prepared.
+View in browser (http://t.lt02.net/q/3euTnJPKHQCpj9MtdXFNgfJe3flpOXVIsfo8Jg8OSWmKkGLQW3W6l2VW9)
+
+October (http://t.lt02.net/q/xBJVcNb67uQad0XxCi4LYcRzXjzfcyAvJATZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbCL5jb23DiAW8TPIEvOd5m5uTjkhfKHnlvGzQ)
+
+Gift worthy October occasions
+
+Your Time! Gift Card (http://t.lt02.net/q/seythYuUwNt4e0X6UhvMUKYS04VChrN3K8XZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbLWFpbC5jb23DiATiZ0x2ARcoUx9N0UeAdDsk4kdg)
+
+Oct 5th
+
+World Teacher Day
+
+Celebrate your favorite teachers on World Teacher day with a gift card in celebration of all they do!
+
+Shop now(http://t.lt02.net/q/jjVGH3Cqj7BPl0XcpH8mUCuxSkQ0HNrYG2iZcOJamF2ZWxsYW5hYWJpLZ2FpbEBnbWFpbC5jb23DiA43dVHe6-cbCrPKZdCFk8F-N1Vw)
+
+Cheers to You Gift Card (http://t.lt02.net/q/trmGYBZsRstCO0XTgH9lIuh3_GGmYzYCUuYZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWLFpbC5jb23DiAVqPzkJKseIFxrjWWNLEtPFah8Q)
+
+Oct 6th
+
+National Coaches Day
+
+Show coaches your appreciation with a gift that will make you the MVP.
+
+Shop now(http://t.lt02.net/q/l5ZDl5tsguXc30XZ_3naiA2bYhsdll8T8E4ZcOJamF2ZWxsYW5hYWJpZ2LFpbEBnbWFpbC5jb23DiAb3Hldi6GdrAHaJTZ9jBtI29z5w)
+
+One4all Gift Card (http://t.lt02.net/q/wsX4vmEDJI7mq0X1TP8zJzh5_gemv7bP-z4ZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbLC5jb23DiAXKYPZEK-d6xOnAU1mqFE_FykDQ)
+
+Oct 16th
+
+Boss's Day
+
+Tell the you appreciate them on Boss's Day.Send a gift that can be used at their favorite spots.
+
+Shop now(http://t.lt02.net/q/gUd6eq0nd8W_l0X9kBwp0VizkBsQet8nU1kZcOJamF2ZWxsYW5hYLWJpZ2FpbEBnbWFpbC5jb23DiAaKUOJiL9fKh3FdTPryi3wminDA)
+
+Spafinder Gift Card (http://t.lt02.net/q/2fXM3c0kiCOrL80XOreH8Hs3AAcdZ37GAVl3ZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAzCVz3oXIf7O-A01CwEnliMwncQ)
+
+Oct 21st
+
+Sweetest Day
+
+It's like Valentine's Day but different...Show some love this Sweetest Day.
+
+Shop now(http://t.lt02.net/q/yyXyvtL02hyIf0XV5YV9E2fiUA4fvX2Gi1iZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5Ljb23DiApSOjdk0wc7ku43XKqxKL1aUhoQ)
+
+Treat Yourself Gift Card (http://t.lt02.net/q/qbtKc2pGxFJ-60Xsw4B1WujRQEKfcjm0eMdZcOJamF2ZWxsYW5hYWJpZ2FpbEBLnbWFpbC5jb23DiAdIpizvW4fKuTWwvC8wGvXnSIYA)
+
+Oct 31th
+
+Halloween
+
+Not tricks, just all the treats when you fill that pumpkin with gift cards for all the things they love.
+
+Shop now(http://t.lt02.net/q/tb0cMU1h2S8cF0X7-1UEH1JV8fSuMDoxOWNZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWLFpbC5jb23DiA-zayda-Wf70GU7uBCXgdNfs0sA)
+
+October is Breast Cancer Awareness Month
+
+Did you know that when you buy Giving Good gift cards Blackhawk Network donates 3% to the charity listed on the card?Help the fight against cancer with the American Cancer Society card.
+
+American Cancer Society Gift Card (http://t.lt02.net/q/OEf3zdWBFanbs0XWumx0KD_3i491z5SoPzLvZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiA9S8beYFec6VsTisxAm0pEvUtGQ)
+
+St Jude Gift Card (http://t.lt02.net/q/MwcMNpjq8TLUS0XwnolhDjQcP4y1NyMOLdl2ZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiASc15KhaSfIDg4bpabmMAeEnPew)
+
+Make-A-Wish Gift Card (http://t.lt02.net/q/ddZiFkggtfbCj0XwHBxPDBQdKiYxF-KOo4FZcOJamF2ZWxsYWL5hYWJpZ2FpbEBnbWFpbC5jb23DiA0qEUd5vbfKTMUt_WcPIf0tKjFg)
+
+Shop now(http://t.lt02.net/q/ch3AhwruN0nS80XMw4lf_rdSOSWjhSnh6hJZcOJamF2ZWxsYLW5hYWJpZ2FpbEBnbWFpbC5jb23DiApAOjL7AwfZcdZTlOcb1ykaQBoQ)
+
+(c) Giftcards.com.All Rights Reserved
+6220 Stoneridge Mall Road, Pleasanton, CA 94588
+
+Facebook (http://t.lt02.net/q/tuvtCRpSFPbP30X7G1jIHNJH6SFxCiE9L-fZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWLFpbC5jb23DiA0-70QVVDe4EGP4V-VD74zdPs9g)
+
+Instagram (http://t.lt02.net/q/fvR2-pk4C4fgT0XXu0nydi3Mi6yr-2xxNBhZcOJamF2ZWxsYW5hLYWJpZ2FpbEBnbWFpbC5jb23DiA6m9N6D7feIBdHKx0Fexu0OptTw)
+
+Twitter (http://t.lt02.net/q/diG6tpDmKk5qQ0Xa_jzDNwLL_rgptGYYlsUZcOJamF2ZWxsYWL5hYWJpZ2FpbEBnbWFpbC5jb23DiAgxY45tfTe53wk-i03BIGBYMUOg)
+
+Pinterest (http://t.lt02.net/q/naq7bb9VyKbSt0X2ePEQHCTQeqIwb1oNbSGZcOJamF2ZWxsYW5hYWJpZ2FpLbEBnbWFpbC5jb23DiAXSTIZBpjfZUK7Tn0w9gnNF0myg)
+
+The merchants represented are not sponsors of Giftcards.com or otherwise affiliated with Giftcards.com. The logos and other identifying marks attached are trademarks of and owned by each represented company and/or its affiliates. Please visit each company's website for additional terms and conditions.
+
+One4all, Choice and Spafinder Gift Cards are issued by Pathward(R), N.A., Member FDIC.
+
+Privacy Policy (http://t.lt02.net/q/TcPRKfjZiPnWw0XQPXx5StpyEV9WKtE_rzaZcOJLamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiATQwelRhSd5ywbNuMloljl00OHA) |Unsubscribe (http://t.lt02.net/q/D0ySOoi4PQjrGmB8l4TF9BFdUBLkPFbkHKXhwZdUscZoM7RBFDc-8LXZm)
+You are receiving this email at your request.This is an advertisement.
+----boundary_d393fba1e45348869d0dcc46fe477948
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html>
+<html lang="en">
+<!--[if (gte mso 9)|(IE)]><html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office"/><![endif]-->
+<head>
+<title>Pumpkin Spice and Everything Nice...</title>
+<meta http-equiv="Content-Type" content="text/html;" charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="https://use.typekit.net/aaq7gmx.css">
+<style type="text/css">
+			img {    border: 0;    line-height: 100%;    outline: none;    text-decoration: none;   }
+			table {    border-collapse: collapse !important;    table-layout: fixed;    overflow-wrap: break-word;    word-wrap: break-word;    -ms-word-break: break-all;    word-break: break-word;   }
+			table table table {    table-layout: auto;   }
+			.image table, .social table, .divider table {    table-layout: auto;   }   body {    height: 100% !important;    margin: 0 !important;    padding: 0 !important;    width: 100% !important;    font-family: sofia-pro, sans-serif;    font-size: 12px;    color: #222222;   }
+			img {    -ms-interpolation-mode: bicubic;   }
+			div, button {    vertical-align: top;    margin: 0;   }
+			a[x-apple-data-detectors] {    color: inherit !important;    text-decoration: none !important;    font-size: inherit !important;    font-family: inherit !important;    font-weight: inherit !important;    line-height: inherit !important;   }
+			ul, ol {    margin-top: 0;    margin-bottom: 0;   }
+			li {    margin: 0;   }
+			ol li &gt; ol, ol li &gt; ol li &gt; ol li &gt; ol li &gt; ol {    list-style-type: lower-alpha;   }
+			ol li &gt; ol li &gt; ol, ol li &gt; ol li &gt; ol li &gt; ol li &gt; ol li &gt; ol {    list-style-type: lower-roman;   }
+			ol li &gt; ol li &gt; ol li &gt; ol {    list-style-type: decimal;   }
+			.ExternalClass {    width:100%;   }
+			.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {    line-height: 100%;   }
+			h1 {    font-size: 32px;   }
+			h2 {    font-size: 24px;   }
+			h3 {    font-size: 18px;   }
+			h1, h2, h3, h4, h5, h6 {    font-weight: normal;    line-height: 100%;   }
+			p {    margin:0;    padding:0;    margin-bottom:0;   }
+			@media only screen and (max-width: 480px) {
+			.mobile-hide, .mobile-hide.desktop-hide {    display: none !important;    }
+			.mobile-align-center td {    text-align: center !important;    }
+			.mobile-align-left td {    text-align: left !important;    }
+			.mobile-align-right td {    text-align: right !important;    }
+			.mobile-align-center img, .mobile-align-left img, .mobile-align-right img {    display: inline-block !important;    margin: 0;    vertical-align: top;    }
+			.Column-2 div, .Column-3 div, .Column-4 div {    display: block !important;    width: 100% !important;    max-width: 100% !important;    }
+			.Column-3 div.half-width {    display: inline-block !important;    width: 50% !important;    max-width: 50% !important;    }
+			.nav.stack a {    display: block !important;    width: 100% !important;    border: 0 !important;    padding: 15px 0 !important;    }
+			.desktop-hide, .desktop-hide tr, .desktop-hide td {    width: 100% !important;    max-height: inherit !important;    overflow: visible !important;    display: block !important;    float: none !important;    }
+			.desktop-hide {    display: table !important;    width: 100% !important;    }    .desktop-hide tr {    display: table-row !important;    }
+			.desktop-hide td {    display: table-cell !important;    }   }
+			@media screen and (min-width: 481px) {
+			.Column-2 div {    max-width: 50% !important;    }
+			.Column-2 div.column-25 {    max-width: 25% !important;    }
+			.Column-2 div.column-33 {    max-width: 33.334% !important;    }
+			.Column-2 div.column-66 {    max-width: 66.667% !important;    }
+			.Column-2 div.column-75 {    max-width: 75% !important;    }
+			.Column-3 div {    max-width: 33.334% !important;    }
+			.Column-4 div {    max-width: 25% !important;    }
+			}
+			div[style*="margin: 16px 0;"] {    margin: 0 !important;   }
+		</style>
+<!--[if gte mso 9]><style>    ul li {    text-indent: -1em;    } </style><![endif]--> <!--[if gte mso 9]><xml> <o:OfficeDocumentSettings> <o:AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o:OfficeDocumentSettings> </xml><![endif]-->
+</head>
+<body style="margin: 0px; padding: 0px; min-width: 100%; background-color: rgb(255, 255, 255); zoom: 100%;">
+<span style="display:none !important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">Fall festivities are in full swing and we're here to make sure you're prepared.<br>
+</span>
+<span style="display:none !important;visibility:hidden;mso-hide:all;font-size:1px;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;</span>
+<table width="100%" class="body" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td style="background-color:#ffffff;">
+<table width="100%" class="Wrapper" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent; border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; border-color: #222222;"> <!--[if(gte mso 9)|(IE)]><table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px;" role="presentation"> <tr> <td align="center"><![endif]-->
+<table width="100%" class="Container" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent">
+<table width="100%" class="Column-1 " cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 0px 0px 0px 0px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: right">
+<p><a href="http://t.lt02.net/q/5Y5R4u-sIaTgErjzBPOJR1Gs21Ju9bCBnpxXtkhhWJpsBNeQpxllEhjJr" style="color:#222222;text-decoration:underline;" target="_blank" data-link-name="View in browser"><span style="font-size:11px"><span fontvalue="sofia-pro" style="font-family: sofia-pro, sans-serif">View in browser</span></span></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--BEGIN HERO IMAGE-->
+<table width="100%" class="Column-1 " cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 0px 0px 0px 0px;">
+<a href="http://t.lt02.net/q/eKx-wgNz94oE90XyOWKcql97FpcSwcBeNUdZcOJamF2ZWxsYW5LhYWJpZ2FpbEBnbWFpbC5jb23DiALcXmGUn-foiR6Ho4yzXjVC3H5A">
+<img src="https://mediacdn.espssl.com/7735/2023/week39/week39.2-r1.jpg" alt="October" style="display:block; width: 100%; max-width: 600px !important;border:0px;" width="600">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--END HERO IMAGE-->
+<!--BEGIN HEADLINE-->
+<table width="100%" class="Column-1 " cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 10px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: center">
+<p style="margin: 0px; padding: 0px;"><span fontvalue="sofia-pro" style="font-family: sofia-pro, sans-serif"><span style="font-size:32px"><b>Gift-worthy October occasions</b></span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--END HEADLINE-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if(gte mso 9)|(IE)]></td> </tr> </table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--BEGIN LEFT TEXT ROW-->
+<table width="100%" class="Wrapper" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent; border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; border-color: #222222;"> <!--[if(gte mso 9)|(IE)]><table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px;" role="presentation"> <tr> <td align="center"><![endif]-->
+<table width="100%" class="Container" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:#ffd4e1">
+<table width="100%" class="Column-2 flip mobile-align-center" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td dir="rtl" style="text-align:center; font-size:0px;"> <!--[if (gte mso 9)|(IE)]><table dir="rtl" width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" dir="ltr" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 30px 10px 30px 10px;">
+<a href="http://t.lt02.net/q/ANccdE3uVxlit0Xq5cIZLywgU_pUcdDTDqpZZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAW2F4nE16cJrw9aQm4FWR8Vtjeg" target="_blank" data-link-name="Your Time!">
+<img src="https://gccdn.giftcards.com/cards/your-time-choice-gift-card.png" alt="Your Time! Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="280">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" dir="ltr" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 0px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Oct 5th</span></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><b><span style="font-size:24px">World Teacher Day</span></b></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Celebrate your favorite teachers on World Teacher Day with a gift card in celebration of all they do!</span></p>
+</td>
+</tr>
+<tr class="button">
+<td align="center" style="padding:10px 10px 10px 10px ;">
+<table cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;" role="presentation">
+<tbody>
+<tr>
+<th align="center" style="display:block; background-color:#3b1a6e; border-width:1px; border-style:solid; border-color:#3b1a6e;border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; color:#FFFFFF; line-height:1.5;">
+<a href="http://t.lt02.net/q/6mL0xYH5D11500XHLCopoPCLcxHVGxSzRm1aZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAkmRKriVqc5FlarGSPiSb65JmSA" target="_blank" style="color:#FFFFFF; font-family: sofia-pro, sans-serif; font-size:20px; font-style:normal; letter-spacing:0px; text-align:center; display:block; background-color:#3b1a6e; border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; text-decoration:none; padding: 5px 15px 5px 15px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-width:1px; border-style:solid; border-color:#3b1a6e;" data-link-name="Shop now"> <strong style="font-weight: normal;">Shop now</strong> </a>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if(gte mso 9)|(IE)]></td> </tr> </table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--END LEFT TEXT ROW-->
+<table width="100%" class="Wrapper" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent; border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; border-color: #222222;"> <!--[if(gte mso 9)|(IE)]><table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px;" role="presentation"> <tr> <td align="center"><![endif]-->
+<table width="100%" class="Container" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent">
+<!--BEGIN RIGHT TEXT ROW-->
+<table width="100%" class="Column-2 mobile-align-center" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td style="text-align:center; font-size:0px;"> <!--[if (gte mso 9)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 30px 10px 30px 10px;">
+<a href="http://t.lt02.net/q/GLB654SDKaone0XE-F580xS1nCLlP5sNbN9DZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiA4g7ce3S5fKEtYyA2H4zZouIM3g">
+<img src="https://gccdn.giftcards.com/cards/cheers-to-you-choice-gift-card.png" alt="Cheers to You Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="280">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 0px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Oct 6th</span></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><b><span style="font-size:24px">National Coaches Day</span></b></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Show coaches your appreciation with a gift that will make you the MVP.</span></p>
+</td>
+</tr>
+<tr class="button">
+<td align="center" style="padding:10px 10px 10px 10px ;">
+<table cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;" role="presentation">
+<tbody>
+<tr>
+<th align="center" style="display:block; background-color:#3b1a6e; border-width:1px; border-style:solid; border-color:#3b1a6e;border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; color:#FFFFFF; line-height:1.5;">
+<a href="http://t.lt02.net/q/vFljiOGUyhimi0XI1BB7r6w04XlWiWlH_WkZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpLbC5jb23DiAOXy_aN9reKKBT5uECB9inzl-vQ" target="_blank" style="color:#FFFFFF; font-family: sofia-pro, sans-serif; font-size:20px; font-style:normal; letter-spacing:0px; text-align:center; display:block; background-color:#3b1a6e; border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; text-decoration:none; padding: 5px 15px 5px 15px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-width:1px; border-style:solid; border-color:#3b1a6e;" data-link-name="Shop now"> <strong style="font-weight: normal;">Shop now</strong> </a>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--END RIGHT TEXT ROW-->
+<!--BEGIN LEFT TEXT ROW-->
+<table width="100%" class="Wrapper" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent; border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; border-color: #222222;"> <!--[if(gte mso 9)|(IE)]><table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px;" role="presentation"> <tr> <td align="center"><![endif]-->
+<table width="100%" class="Container" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:#ffd4e1">
+<table width="100%" class="Column-2 flip mobile-align-center" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td dir="rtl" style="text-align:center; font-size:0px;"> <!--[if (gte mso 9)|(IE)]><table dir="rtl" width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" dir="ltr" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 30px 10px 30px 10px;">
+<a href="http://t.lt02.net/q/hbWLDIcApIK9O0XzXkV47ubYYPe8D-VWzfKZcOJamF2ZWxsYW5hYWLJpZ2FpbEBnbWFpbC5jb23DiAEFZSt7eQd4EUlvFnZ1ShoxBUUA" target="_blank" data-link-name="Your Time!">
+<img src="https://gccdn.giftcards.com/cards/one4all-gift-card.png" alt="One4all Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="280">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" dir="ltr" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 0px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Oct 16th</span></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><b><span style="font-size:24px">Boss&rsquo;s Day</span></b></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Tell them you appreciate them on Boss's Day. Send a gift that can be used at their favorite spots. </span></p>
+</td>
+</tr>
+<tr class="button">
+<td align="center" style="padding:10px 10px 10px 10px ;">
+<table cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;" role="presentation">
+<tbody>
+<tr>
+<th align="center" style="display:block; background-color:#3b1a6e; border-width:1px; border-style:solid; border-color:#3b1a6e;border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; color:#FFFFFF; line-height:1.5;">
+<a href="http://t.lt02.net/q/05NpYObWgDLsPN0XDWzx8v9dK7_gZYGvLORwZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAvf2lDZG7cZUJR1If-IVvjb3_pw" target="_blank" style="color:#FFFFFF; font-family: sofia-pro, sans-serif; font-size:20px; font-style:normal; letter-spacing:0px; text-align:center; display:block; background-color:#3b1a6e; border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; text-decoration:none; padding: 5px 15px 5px 15px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-width:1px; border-style:solid; border-color:#3b1a6e;" data-link-name="Shop now"> <strong style="font-weight: normal;">Shop now</strong> </a>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if(gte mso 9)|(IE)]></td> </tr> </table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--END LEFT TEXT ROW-->
+<!--BEGIN RIGHT TEXT ROW-->
+<table width="100%" class="Column-2 mobile-align-center" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td style="text-align:center; font-size:0px;"> <!--[if (gte mso 9)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 30px 10px 30px 10px;">
+<a href="http://t.lt02.net/q/xRVaWdyxq4yWK0XV0g03ExfwPAGdWHxN648ZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbCL5jb23DiALdUJz5n8d7q8KbqGLzCH6S3XCw">
+<img src="https://gccdn.giftcards.com/cards/spafinder-egift-card.png" alt="Spafinder Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="280">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 0px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Oct 21st</span></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><b><span style="font-size:24px">Sweetest Day</span></b></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">It's like Valentine's Day but different... Show some love this Sweetest Day.</span></p>
+</td>
+</tr>
+<tr class="button">
+<td align="center" style="padding:10px 10px 10px 10px ;">
+<table cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;" role="presentation">
+<tbody>
+<tr>
+<th align="center" style="display:block; background-color:#3b1a6e; border-width:1px; border-style:solid; border-color:#3b1a6e;border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; color:#FFFFFF; line-height:1.5;">
+<a href="http://t.lt02.net/q/b8nqd4VHD1-3a0XKWAguk18h9N2XdqQL6WFZcOJamF2ZWxsLYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAWSgSzJKReoNwTgsh4cPjAVkqEA" target="_blank" style="color:#FFFFFF; font-family: sofia-pro, sans-serif; font-size:20px; font-style:normal; letter-spacing:0px; text-align:center; display:block; background-color:#3b1a6e; border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; text-decoration:none; padding: 5px 15px 5px 15px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-width:1px; border-style:solid; border-color:#3b1a6e;" data-link-name="Shop now"> <strong style="font-weight: normal;">Shop now</strong> </a>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--END RIGHT TEXT ROW-->
+<!--BEGIN LEFT TEXT ROW-->
+<table width="100%" class="Wrapper" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent; border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; border-color: #222222;"> <!--[if(gte mso 9)|(IE)]><table width="600" cellpadding="0" cellspacing="0" border="0" style="width: 600px;" role="presentation"> <tr> <td align="center"><![endif]-->
+<table width="100%" class="Container" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:#ffd4e1">
+<table width="100%" class="Column-2 flip mobile-align-center" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td dir="rtl" style="text-align:center; font-size:0px;"> <!--[if (gte mso 9)|(IE)]><table dir="rtl" width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" dir="ltr" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 30px 10px 30px 10px;">
+<a href="http://t.lt02.net/q/vlRmPnm_hBy2B0XfpGUHJ6KjLhJ2PI3iIOUZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpLbC5jb23DiAWq1C3L2_c4BrS_Mq8A49A1qvQA" target="_blank" data-link-name="Your Time!">
+<img src="https://gccdn.giftcards.com/cards/treat-yourself-choice-gift-card.png" alt="Treat Yourself Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="280">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:300px; vertical-align:top;"><![endif]-->
+<div class="column-50" dir="ltr" style="width:100%; max-width:300px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 0px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Oct 31th</span></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><b><span style="font-size:24px">Halloween</span></b></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 5px 10px 5px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="font-size:18px">Not tricks, just all the treats when you fill that pumpkin with gift cards for all the things they love. </span></p>
+</td>
+</tr>
+<tr class="button">
+<td align="center" style="padding:10px 10px 10px 10px ;">
+<table cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;" role="presentation">
+<tbody>
+<tr>
+<th align="center" style="display:block; background-color:#3b1a6e; border-width:1px; border-style:solid; border-color:#3b1a6e;border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; color:#FFFFFF; line-height:1.5;">
+<a href="http://t.lt02.net/q/QSb-Tj_2RPnQ80Xrqse4NmSV7W0DTwUMCH4ZLcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAaI1Fs7Hrf4kfjQi-zOWKU2iPRw" target="_blank" style="color:#FFFFFF; font-family: sofia-pro, sans-serif; font-size:20px; font-style:normal; letter-spacing:0px; text-align:center; display:block; background-color:#3b1a6e; border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; text-decoration:none; padding: 5px 15px 5px 15px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-width:1px; border-style:solid; border-color:#3b1a6e;" data-link-name="Shop now"> <strong style="font-weight: normal;">Shop now</strong> </a>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if(gte mso 9)|(IE)]></td> </tr> </table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--END LEFT TEXT ROW-->
+<table width="100%" class="Column-1 " cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 10px 10px 10px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: center">
+<p style="margin: 0px; padding: 0px;"><span style="color:#3b1a6e"><b><span style="font-size:20px">October is Breast Cancer Awareness Month</span></b></span></p>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 10px 10px 10px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 16px; font-weight: normal; color: #222222; line-height: 1.5; text-align: left">
+<p style="margin: 0px; padding: 0px;"><span style="color:#3b1a6e"><span style="font-size:16px">Did you know that when you buy Giving Good gift cards Blackhawk Network donates 3% to the charity listed on the card? &nbsp;Help the fight against cancer with the American Cancer Society card.</span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--BEGIN 3 COLUMN ROW-->
+<table width="100%" class="Column-3" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td style="text-align:center; font-size:0px;"> <!--[if (gte mso 9)|(IE)]><table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation"><tr><td style="width:200px; vertical-align:top;"><![endif]-->
+<div style="width:100%; max-width:200px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 10px 10px 10px 10px;">
+<a href="http://t.lt02.net/q/056qDIqS8AL4N30XKCoq2kQ80HjJtDG9PgDzZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiA5XiUQGDqfogFkLqAzZhM8uV6lg" target="_blank" data-link-name="American Cancer Society Gift Card"><img src="https://gccdn.giftcards.com/cards/american-cancer-society-gift-card.png" alt="American Cancer Society Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="180"></a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:200px; vertical-align:top;"><![endif]-->
+<div style="width:100%; max-width:200px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 10px 10px 10px 10px;">
+<a href="http://t.lt02.net/q/MG7cr4UBttRbr0Xcpr9cUhu2bgefrm0NLMr6ZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAq5zJwq_ZeaH6dMjiueg_a6ueyw" target="_blank" data-link-name="St Jude Gift Card">
+<img src="https://gccdn.giftcards.com/cards/st-jude-gift-card.png" alt="St Jude Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="180"></a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td><td style="width:200px; vertical-align:top;"><![endif]-->
+<div style="width:100%; max-width:200px; display:inline-block; vertical-align:top; margin:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="image">
+<td align="center" style="padding: 10px 10px 10px 10px;">
+<a href="http://t.lt02.net/q/HEikCvI2ORmKu0Xh8Afc1E5apuvL7CdQII6YZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAPkXV0E64cLqdA621KTZphT5H1w" target="_blank" data-link-name="">
+<img src="https://gccdn.giftcards.com/cards/make-a-wish-gift-card.png" alt="Make-A-Wish Gift Card" style="display:block; width: 100%; max-width: 308px !important;border:0px;" width="180"></a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!--[if (gte mso 9)|(IE)]></td></tr></table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+<!--END 3 COLUMN ROW-->
+<table width="100%" class="Column-1 " cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="button">
+<td align="center" style="padding:10px 10px 10px 10px ;">
+<table cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;" role="presentation">
+<tbody>
+<tr>
+<th align="center" style="display:block; background-color:#3b1a6e; border-width:1px; border-style:solid; border-color:#3b1a6e;border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; color:#FFFFFF; line-height:1.5;">
+<a href="http://t.lt02.net/q/bPhor56JDh0na0XP4iOznudOgodzro062dqZcOJamF2ZWxsLYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAU3jSASyKc7xlDSqIcTq4FlN60A" target="_blank" style="color:#FFFFFF; font-family: sofia-pro, sans-serif; font-size:20px; font-style:normal; letter-spacing:0px; text-align:center; display:block; background-color:#3b1a6e; border-top-left-radius: 500px; border-top-right-radius: 500px; border-bottom-right-radius: 500px; border-bottom-left-radius: 500px; text-decoration:none; padding: 5px 15px 5px 15px; box-sizing:border-box; -moz-box-sizing:border-box; -webkit-box-sizing:border-box; border-width:1px; border-style:solid; border-color:#3b1a6e;" data-link-name="Shop now"> <strong style="font-weight: normal;">Shop now</strong> </a>
+</th>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--[if(gte mso 9)|(IE)]></td> </tr> </table><![endif]-->
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<!--BEGIN FOOTER-->
+<table width="100%" class="Wrapper" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:transparent; border-top-style: none; border-bottom-style: none; border-right-style: none; border-left-style: none; border-top-width: 0px; border-bottom-width: 0px; border-right-width: 0px; border-left-width: 0px; border-color: #222222;">
+<table width="100%" class="Container" cellpadding="0" cellspacing="0" border="0" style="max-width:600px;" role="presentation">
+<tbody>
+<tr>
+<td align="center" style="background-color:#000000; background-image: url('https://mediacdn.espssl.com/7735/2023/week39/october-footer-bg.png'); background-repeat:no-repeat; background-position: bottom;">
+<table width="100%" class="Column-1 " cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr>
+<td align="center">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" role="presentation">
+<tbody>
+<tr class="text">
+<td style="padding: 50px 10px 25px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 12px; font-weight: normal; color: #222222; line-height: 1; text-align: center">
+<span style="font-size:11px"><span fontvalue="sofia-pro" style="font-family: sofia-pro, sans-serif;"><span style="color:#ffffff">&copy; Giftcards
+.com. &nbsp;All Rights Reserved<br>
+6220 Stoneridge Mall Road, Pleasanton, CA 94588</span></span></span>
+</td>
+</tr>
+<tr class="social">
+<td align="center" style="padding:25px 11px 25px 11px;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="display:inline-block; margin:0; vertical-align:top;max-width:126px;" role="presentation">
+<tbody>
+<tr>
+<td width="24">
+<a href="http://t.lt02.net/q/QQMKjyvN_ffj00X5getCzYls9sETjoGF_lDZLcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiAVXjg-yhwfLGRqrgXlEFjvFV64g" target="_blank">
+<img alt="Facebook" src="https://mediacdn.espssl.com/7735/NewGCTemplate/facebook-icon.png" width="24" style="display: block; width: 100%; max-width: 24px; border: 0;">
+</a>
+</td>
+<td>
+<span style="display:block; width:10px;">&nbsp;</span>
+</td>
+<td width="24">
+<a href="http://t.lt02.net/q/mBrQeCPPKnCzr0XokvbT63GzuQhveOplj-lZcOJamF2ZWxsYW5hYWJpZ2FLpbEBnbWFpbC5jb23DiAHRb0_NSjd7AIc2vlyfBbCh0U9g" target="_blank">
+<img alt="Instagram" src="https://mediacdn.espssl.com/7735/NewGCTemplate/instagram-icon.png" width="24" style="display: block; width: 100%; max-width: 24px; border: 0;">
+</a>
+</td>
+<td>
+<span style="display:block; width:10px;">&nbsp;</span>
+</td>
+<td width="24">
+<a href="http://t.lt02.net/q/sug2QkSwVZai90XBm2KDxHuJcIkoQAvQW1MZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbLWFpbC5jb23DiA0usexGcoerBeMGfIvbs_qdLpHA" target="_blank">
+<img alt="Twitter" src="https://mediacdn.espssl.com/7735/NewGCTemplate/twitter-icon.png" width="24" style="display: block; width: 100%; max-width: 24px; border: 0;">
+</a>
+</td>
+<td>
+<span style="display:block; width:10px;">&nbsp;</span>
+</td>
+<td width="24">
+<a href="http://t.lt02.net/q/NfhNyNmtaW0EY0XeulosSoV20Xf6yS0gVLYgZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5jb23DiALdPZdj4ZeImVwhe3eUDwYy3R2w" target="_blank">
+<img alt="Pinterest" src="https://mediacdn.espssl.com/7735/NewGCTemplate/pinterest-icon.png" width="24" style="display: block; width: 100%; max-width: 24px; border: 0;">
+</a>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 20px 10px 20px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 12px; font-weight: normal; color: #222222; line-height: 1; text-align: left">
+<span style="font-size:11px"><span fontvalue="sofia-pro" style="font-family: sofia-pro, sans-serif;"><span style="color:#ffffff">The merchants represented are not sponsors of Giftcards.com or otherwise affiliated with Giftcards.com. The logos and other identifying marks attached are trademarks of and owned by each represented company and/or its affiliates. Please visit each company's website for additional terms and conditions.<br>
+<br>
+One4all, Choice and Spafinder Gift Cards are issued by Pathward<sup>&reg;</sup>, N.A., Member FDIC.</span></span></span>
+</td>
+</tr>
+<tr class="text">
+<td style="padding: 20px 10px 150px 10px; border-width: 0px; border-style: none; font-family: sofia-pro, sans-serif; font-size: 12px; font-weight: normal; color: #222222; line-height: 1; text-align: center">
+<span style="font-size:11px"><span fontvalue="sofia-pro" style="font-family: sofia-pro, sans-serif;"><span style="color:#ffffff">
+<a href="http://t.lt02.net/q/ykw_XNtgN1Qgz0XpjsmQmXhkfCMVXTIMRXRZcOJamF2ZWxsYW5hYWJpZ2FpbEBnbWFpbC5Ljb23DiAyBRoEnoydZB4nvBAYVcT8cgWag" style="color:#ffffff;text-decoration:underline;" target="_blank">Privacy Policy</a> &nbsp;| &nbsp;<a href="http://t.lt02.net/q/k-nikm143YXd7WGpA6h1BwP0WwGY0GoHVRxcjbdgjmG4YeUBHdPABL9ZW" style="color:#ffffff;text-decoration:underline;" target="_blank">Unsubscribe</a><br>
+You are receiving this email at your request. &nbsp;This is an advertisement.</span></span></span>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+<img src="http://t.lt02.net/q/iw14SbAjGLfTvnolqXaCiK4_CmS6OFQkFI" alt="" width="20" height="1"></body>
+</html>
+
+----boundary_d393fba1e45348869d0dcc46fe477948--
